@@ -36,6 +36,7 @@ export default function ClimaPage() {
     if (user) {
       loadCheckins()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   const loadCheckins = async () => {
@@ -184,7 +185,7 @@ export default function ClimaPage() {
               ].map(({ key, label }) => (
                 <button
                   key={key}
-                  onClick={() => setSelectedMetric(key as any)}
+                  onClick={() => setSelectedMetric(key as 'all' | 'cansaço' | 'confiança' | 'conexão_familiar')}
                   className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
                     selectedMetric === key
                       ? 'bg-purple-600 text-white'
@@ -213,11 +214,10 @@ export default function ClimaPage() {
                       label={{ value: 'Pontuação', angle: -90, position: 'insideLeft' }}
                     />
                     <Tooltip 
-                      formatter={(value: any, name: any) => [value, name]}
-                      labelFormatter={(label) => `Semana ${label}`}
+                      formatter={(value: unknown, name: unknown) => [value as number, name as string]}
+                      labelFormatter={(label: string) => `Semana ${label}`}
                     />
                     <Legend />
-                    
                     {selectedMetric === 'all' ? (
                       <>
                         <Line 
@@ -263,7 +263,7 @@ export default function ClimaPage() {
                 <div className="text-center">
                   <BarChart3 className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <p className="text-gray-500">Nenhum dado disponível ainda</p>
-                  <p className="text-sm text-gray-400">Complete seu primeiro "Diário da Fogueira" para ver os gráficos</p>
+                  <p className="text-sm text-gray-400">Complete seu primeiro &quot;Diário da Fogueira&quot; para ver os gráficos</p>
                 </div>
               </div>
             )}
@@ -296,4 +296,4 @@ export default function ClimaPage() {
       </main>
     </div>
   )
-} 
+}

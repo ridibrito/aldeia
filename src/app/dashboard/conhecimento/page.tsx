@@ -1,10 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useAuth } from '@/contexts/AuthContext'
-import { supabase } from '@/lib/supabase'
-import { ArrowLeft, BookOpen, Calendar, Video, ExternalLink, Clock, Users } from 'lucide-react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { ArrowLeft, BookOpen, Calendar, Video, ExternalLink, Clock, Users } from 'lucide-react'
 
 interface Course {
   id: string
@@ -27,7 +25,6 @@ interface Live {
 }
 
 export default function ConhecimentoPage() {
-  const { user } = useAuth()
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'cursos' | 'lives' | 'calendario'>('cursos')
 
@@ -154,7 +151,7 @@ export default function ConhecimentoPage() {
             ].map(({ key, label, icon: Icon }) => (
               <button
                 key={key}
-                onClick={() => setActiveTab(key as any)}
+                onClick={() => setActiveTab(key as 'cursos' | 'lives' | 'calendario')}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                   activeTab === key
                     ? 'bg-orange-600 text-white'

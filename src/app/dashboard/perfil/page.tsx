@@ -110,10 +110,6 @@ export default function PerfilPage() {
 
       if (result.error) throw result.error
 
-      if (result.data) {
-        setFamilyData(prev => ({ ...prev, id: result.data[0]?.id || prev.id }))
-      }
-
       setEditing(false)
     } catch (error) {
       console.error('Erro ao salvar dados familiares:', error)
@@ -137,7 +133,7 @@ export default function PerfilPage() {
     }))
   }
 
-  const updateFamilyMember = (id: string, field: keyof FamilyMember, value: any) => {
+  const updateFamilyMember = (id: string, field: keyof FamilyMember, value: string | number) => {
     setFamilyData(prev => ({
       ...prev,
       family_members: prev.family_members.map(member =>
@@ -259,7 +255,7 @@ export default function PerfilPage() {
               </label>
               <select
                 value={familyData.structure_type}
-                onChange={(e) => setFamilyData(prev => ({ ...prev, structure_type: e.target.value as any }))}
+                onChange={(e) => setFamilyData(prev => ({ ...prev, structure_type: e.target.value as 'pai_mae' | 'so_pai' | 'so_mae' | 'duas_maes' | 'dois_pais' | 'outro' }))}
                 disabled={!editing}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50"
               >

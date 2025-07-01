@@ -2,11 +2,7 @@
 
 import { Heart, Settings, AlertCircle } from 'lucide-react'
 
-interface ConfigErrorProps {
-  error: string
-}
-
-export default function ConfigError({ error }: ConfigErrorProps) {
+export default function ConfigError() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center">

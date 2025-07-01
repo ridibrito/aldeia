@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { supabase } from '@/lib/supabase'
-import { ArrowLeft, Briefcase, Save, Edit3, FileText } from 'lucide-react'
+import { ArrowLeft, Briefcase, Save, FileText } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 export default function MochilaPage() {
@@ -19,6 +19,7 @@ export default function MochilaPage() {
     if (user) {
       loadNotes()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function MochilaPage() {
 
       return () => clearTimeout(timeoutId)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content, autoSaveEnabled, loading])
 
   const loadNotes = async () => {

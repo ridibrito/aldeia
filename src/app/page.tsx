@@ -20,6 +20,7 @@ export default function Home() {
         router.push('/login')
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading, router])
 
   const checkOnboardingStatus = async () => {
@@ -99,7 +100,7 @@ export default function Home() {
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Mapeie sua Jornada</h3>
             <p className="text-gray-600">
-              Registre seus sentimentos, desafios e conquistas semanais com o "Diário da Fogueira"
+              Registre seus sentimentos, desafios e conquistas semanais com o &quot;Diário da Fogueira&quot;
             </p>
           </div>
 

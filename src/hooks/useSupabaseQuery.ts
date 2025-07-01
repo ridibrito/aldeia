@@ -14,11 +14,11 @@ interface UseSupabaseQueryResult<T> {
 }
 
 // Cache simples em memória
-const cache = new Map<string, { data: any; timestamp: number }>()
+const cache = new Map<string, { data: unknown; timestamp: number }>()
 
 export function useSupabaseQuery<T>(
   queryKey: string,
-  queryFn: () => Promise<{ data: T | null; error: any }>,
+  queryFn: () => Promise<{ data: T | null; error: Error | null }>,
   options: UseSupabaseQueryOptions = {}
 ): UseSupabaseQueryResult<T> {
   const { enabled = true, cacheTime = 5 * 60 * 1000 } = options // 5 minutos por padrão
@@ -31,7 +31,7 @@ export function useSupabaseQuery<T>(
     // Verificar cache primeiro
     const cached = cache.get(queryKey)
     if (cached && Date.now() - cached.timestamp < cacheTime) {
-      setData(cached.data)
+      setData(cached.data as T)
       return
     }
 

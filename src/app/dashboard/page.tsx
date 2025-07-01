@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { supabase } from '@/lib/supabase'
@@ -10,8 +10,6 @@ import {
   Map, 
   BarChart3, 
   BookOpen, 
-  Calendar,
-  Edit3,
   Plus,
   User,
   Briefcase
@@ -34,7 +32,7 @@ function DashboardCard({
   color, 
   onClick 
 }: {
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
   title: string
   description: string
   color: string

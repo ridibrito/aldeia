@@ -179,7 +179,7 @@ export default function JornadaPage() {
 
           {/* Legend */}
           <div className="mt-6 text-center text-sm text-gray-600">
-            <p>Clique em uma semana completada para ver os detalhes do seu "Diário da Fogueira"</p>
+            <p>Clique em uma semana completada para ver os detalhes do seu &quot;Diário da Fogueira&quot;</p>
           </div>
         </div>
       </main>

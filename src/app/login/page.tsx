@@ -28,8 +28,8 @@ export default function LoginPage() {
         await signUp(email, password, nome)
       }
       router.push('/dashboard')
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Erro desconhecido')
     } finally {
       setLoading(false)
     }

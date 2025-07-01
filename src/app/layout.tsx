@@ -46,7 +46,7 @@ export default function RootLayout({
     return (
       <html lang="pt-BR">
         <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-          <ConfigError error={envCheck.message} />
+          <ConfigError />
         </body>
       </html>
     );
